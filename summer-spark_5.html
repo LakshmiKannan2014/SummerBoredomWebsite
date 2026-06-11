@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer Spark ☀️ — by Lakshmi</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: #FFE9A8; font-family: 'Quicksand', sans-serif; color: #1a1a1a; min-height: 100vh; }
+  .container { max-width: 600px; margin: 0 auto; background: #FFF8E1; border-radius: 20px; padding: 24px; box-shadow: 0 4px 20px rgba(186, 117, 23, 0.15); }
+  button { cursor: pointer; font-family: 'Quicksand', sans-serif; }
+  #chat-input { outline: none; border: 1px solid #FAC775; }
+  code { background:#FAC775; padding:2px 6px; border-radius:4px; font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div style="position: relative; text-align: center; margin-bottom: 2rem; padding: 1rem 0 0.5rem;">
+    <span style="position: absolute; top: 0; left: 8%; font-size: 24px; transform: rotate(-15deg);">🌻</span>
+    <span style="position: absolute; top: 10px; right: 10%; font-size: 22px; transform: rotate(20deg);">🦋</span>
+    <span style="position: absolute; bottom: 10px; left: 16%; font-size: 20px; transform: rotate(-10deg);">🌈</span>
+    <span style="position: absolute; bottom: 0; right: 16%; font-size: 22px; transform: rotate(15deg);">🍉</span>
+    <span style="position: absolute; top: 50%; left: 2%; font-size: 18px;">✨</span>
+    <span style="position: absolute; top: 50%; right: 2%; font-size: 18px;">✨</span>
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: #FAC775; padding: 6px 18px; border-radius: 999px; margin-bottom: 12px;">
+      <span style="font-size: 16px;">☀️</span>
+      <span style="font-family: 'Caveat', cursive; font-size: 16px; font-weight: 700; color: #1a1a1a;">summer 2026</span>
+      <span style="font-size: 16px;">☀️</span>
+    </div>
+    <h1 style="font-family: 'Great Vibes', cursive; font-size: 56px; font-weight: 400; margin: 0; color: #1a1a1a; line-height: 1.1;">Summer Spark</h1>
+    <p style="font-family: 'Caveat', cursive; font-size: 22px; color: #1a1a1a; margin: 4px 0 0; font-weight: 500;">~ stuck inside scrolling? let's fix that ~</p>
+  </div>
+
+  <p style="font-family: 'Caveat', cursive; font-size: 22px; color: #1a1a1a; margin: 0 0 10px; font-weight: 700;">🌟 pick your mood:</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.25rem;" id="mood-row">
+    <button data-mood="creative" style="padding: 14px 6px; border-radius: 12px; color: #1a1a1a; background: white; border: 1px solid #FAC775;">
+      <span style="font-size: 26px; display:block; margin-bottom: 4px;">🎨</span>
+      <span style="font-size: 14px; font-weight: 600;">Creative</span>
+    </button>
+    <button data-mood="active" style="padding: 14px 6px; border-radius: 12px; color: #1a1a1a; background: white; border: 1px solid #FAC775;">
+      <span style="font-size: 26px; display:block; margin-bottom: 4px;">🏊</span>
+      <span style="font-size: 14px; font-weight: 600;">Active</span>
+    </button>
+    <button data-mood="brainy" style="padding: 14px 6px; border-radius: 12px; color: #1a1a1a; background: white; border: 1px solid #FAC775;">
+      <span style="font-size: 26px; display:block; margin-bottom: 4px;">🧠</span>
+      <span style="font-size: 14px; font-weight: 600;">Brainy</span>
+    </button>
+  </div>
+
+  <div id="ideas-box" style="background: white; border-radius: 12px; padding: 1.25rem; min-height: 140px; margin-bottom: 1rem; border: 2px solid #EF9F27; position: relative;">
+    <span style="position: absolute; top: -14px; left: 20px; background: #FAC775; padding: 3px 14px; border-radius: 999px; font-family: 'Caveat', cursive; font-weight: 700; color: #1a1a1a; font-size: 18px;" id="ideas-label">your ideas ✨</span>
+    <p id="ideas-placeholder" style="font-size: 16px; color: #1a1a1a; margin: 14px 0 0; font-weight: 500; text-align: center;">👆 Pick a mood above to see ideas!</p>
+    <div id="ideas-list" style="margin-top: 14px; max-height: 380px; overflow-y: auto;"></div>
+  </div>
+
+  <button id="surprise-btn" style="width: 100%; padding: 16px; border-radius: 12px; background: linear-gradient(90deg, #F0997B, #EF9F27); color: #1a1a1a; border: 2px solid #BA7517; font-weight: 700; font-family: 'Caveat', cursive; font-size: 24px; margin-bottom: 1.75rem; box-shadow: 0 2px 0 #BA7517;">
+    🎲 Surprise me! ✨
+  </button>
+
+  <div style="border-top: 1px dashed #EF9F27; padding-top: 1.5rem;">
+    <div style="display: flex; align-items: center; gap: 14px; background: white; padding: 14px 16px; border-radius: 12px; margin-bottom: 14px; cursor: pointer; border: 1px solid #FAC775;" id="summer-banner">
+      <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+        <line x1="30" y1="3" x2="30" y2="10" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="30" y1="50" x2="30" y2="57" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="3" y1="30" x2="10" y2="30" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="50" y1="30" x2="57" y2="30" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="10" y1="10" x2="15" y2="15" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="45" y1="45" x2="50" y2="50" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="50" y1="10" x2="45" y2="15" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="15" y1="45" x2="10" y2="50" stroke="#EF9F27" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="30" cy="30" r="17" fill="#FAC775" stroke="#EF9F27" stroke-width="2"/>
+        <circle cx="24" cy="28" r="2.2" fill="#1a1a1a"/>
+        <circle cx="36" cy="28" r="2.2" fill="#1a1a1a"/>
+        <circle cx="24.5" cy="27.4" r="0.7" fill="white"/>
+        <circle cx="36.5" cy="27.4" r="0.7" fill="white"/>
+        <path d="M 23 34 Q 30 40 37 34" stroke="#1a1a1a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <circle cx="21" cy="33" r="2.2" fill="#F09595" opacity="0.7"/>
+        <circle cx="39" cy="33" r="2.2" fill="#F09595" opacity="0.7"/>
+      </svg>
+      <div style="flex: 1;">
+        <p style="font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; margin: 0; color: #1a1a1a;">Hi, I'm Summer! ☀️</p>
+        <p style="font-size: 14px; color: #1a1a1a; margin: 0;" id="mode-status">Tap to chat — kid or parent?</p>
+      </div>
+      <span id="summer-toggle" style="font-size: 22px; color: #1a1a1a;">▾</span>
+    </div>
+
+    <div id="summer-chat" hidden style="background: white; border: 1px solid #FAC775; border-radius: 12px; padding: 14px;">
+      <div id="chat-log" style="max-height: 320px; overflow-y: auto; margin-bottom: 12px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="background: #FFF8E1; color: #1a1a1a; padding: 12px 14px; border-radius: 14px 14px 14px 4px; max-width: 90%; align-self: flex-start; font-size: 14px; line-height: 1.6; border: 1px solid #FAC775;">
+          Hi! I'm Summer ☀️ Quick Q first — are you a kid or a parent?<br><br>
+          🧒 If you're a <strong>kid</strong>, type: <code>Kid_4ever</code><br>
+          👨‍👩‍👧 If you're a <strong>parent</strong>, type: <code>Parent_123</code><br><br>
+          Then I'll know how to chat with you! 💛
+        </div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <input id="chat-input" type="text" placeholder="Type Kid_4ever or Parent_123..." style="flex: 1; padding: 10px 14px; border-radius: 999px; font-size: 14px; color: #1a1a1a; background: #FFF8E1;" />
+        <button id="chat-send" style="padding: 10px 18px; border-radius: 999px; background: #FAC775; color: #1a1a1a; border: 1px solid #BA7517; font-weight: 600;">Send 💌</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="done-list-wrap" hidden style="background: #E1F5EE; border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem; border: 1px solid #9FE1CB;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <p style="font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; margin: 0; color: #1a1a1a;">🏆 your summer wins!</p>
+      <span id="count-pill" style="font-size: 13px; background: #5DCAA5; color: #1a1a1a; padding: 4px 12px; border-radius: 999px; font-weight: 600;">0 done</span>
+    </div>
+    <ul id="done-list" style="margin: 0; padding-left: 1.25rem; font-size: 14px; color: #1a1a1a; line-height: 1.8;"></ul>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem; opacity: 0.7;">
+    <p style="font-family: 'Caveat', cursive; font-size: 18px; color: #1a1a1a; margin: 0;">made with 💛 by Lakshmi</p>
+  </div>
+</div>
+
+<script>
+const ideas = {
+  creative: [
+    { text: "Read a book — start a new one or finish one you abandoned", emoji: "📚" },
+    { text: "Draw or sketch something you can see right now", emoji: "✏️" },
+    { text: "Make a craft — bracelets, paper flowers, painted rocks", emoji: "🎨" },
+    { text: "Try making your own website or a digital design", emoji: "💻" },
+    { text: "Sign up for a class — art, music, cooking", emoji: "🎓" },
+    { text: "Write a story or comic — even just a few pages", emoji: "📔" },
+    { text: "Build something from recycling bin stuff", emoji: "♻️" },
+    { text: "Make a scrapbook of your summer so far", emoji: "📸" },
+    { text: "Design a 'dream room' on paper", emoji: "🛏️" }
+  ],
+  active: [
+    { text: "Go to the pool — swim, float, or invent pool games", emoji: "🏊" },
+    { text: "Go OUT somewhere — even a walk to a new spot counts", emoji: "🚶" },
+    { text: "Plan a mini trip with your family for the weekend", emoji: "🚗" },
+    { text: "Play in the rain — puddle jumping, splash time", emoji: "🌧️" },
+    { text: "Bike or scoot somewhere you usually drive to", emoji: "🚲" },
+    { text: "Backyard obstacle course or water-balloon battle", emoji: "💧" },
+    { text: "Pool game with friends — Marco Polo with new rules", emoji: "🎯" },
+    { text: "Visit a park you've never been to before", emoji: "🌳" },
+    { text: "Have a picnic — even just in your backyard", emoji: "🧺" }
+  ],
+  brainy: [
+    { text: "Take a class — try free online (art, coding, language)", emoji: "🎓" },
+    { text: "Learn 3 words in a new language and use them today", emoji: "🌍" },
+    { text: "Kitchen science experiment with water, salt, and ice", emoji: "🧪" },
+    { text: "Plan a real family trip — research a city & food", emoji: "🗺️" },
+    { text: "Build the tallest tower with stuff in your room (no tape!)", emoji: "🗼" },
+    { text: "Learn one magic trick really well and perform it", emoji: "🎩" },
+    { text: "Teach yourself origami — try a crane or a frog", emoji: "🦢" },
+    { text: "Read a book on a topic you know NOTHING about", emoji: "📖" },
+    { text: "Start a summer journal — what happened, what you felt", emoji: "📔" }
+  ]
+};
+
+const kidPassword = "kid_4ever";
+const parentPassword = "parent_123";
+const creatorPassword = "summer is the best";
+let userMode = null;
+
+const kidWelcome = [
+  "YESSS okay bestie ☀️✨ Kid mode UNLOCKED 💅 Now tell me — what's the vibe? Bored? Tired? Hyped? I gotchu!",
+  "Heyyy kiddo!! ☀️ Now we're talking 💅 What's up? Bored? Need ideas?",
+  "OKAY KID MODE ON ⚡✨ Welcome bestie 💛 What's the situation?"
+];
+const parentWelcome = [
+  "Hello! 👋 Welcome — I'm Summer, the chatbot inside Summer Spark. This website was designed and built by Lakshmi (age 11) to help kids find healthy, screen-free activities when they're bored. I know 75+ topics and have built-in safety features that redirect serious concerns to trusted adults. Feel free to explore — or ask me anything about how it works! 💛",
+  "Hi there! 💛 Summer Spark offers 27+ activity ideas across creative, active, and brainy categories. No signup is required, no data is collected, no ads are shown, and serious topics get gently redirected to real adults. Anything you'd like to ask?",
+  "Welcome! 👋 Summer Spark is designed to be the opposite of brain-rot — it gives a kid one activity idea, then sends them away from the screen to actually do it. Safe, free, and thoughtfully designed. 💛"
+];
+const creatorWelcome = [
+  "WAIT — LAKSHMI?! 🤩☀️✨ Heyyy my creator!! You came back to chat with me 💛 You built me with so much CARE — sass, safety, modes, an Easter egg — iconic behavior 👑",
+  "OMG LAKSHMI ☀️🥹 My genius designer! You built ALL of this. You should be SO proud bestie ✨💛"
+];
+const promptForMode = [
+  "Hold up bestie 🛑 Before we chat I gotta know — are you a KID or a PARENT? Type <strong>Kid_4ever</strong> 🧒 OR <strong>Parent_123</strong> 👨‍👩‍👧 to start!",
+  "Wait wait! 🌟 Tell me first — kid or parent? Type <strong>Kid_4ever</strong> or <strong>Parent_123</strong> 💛"
+];
+
+const seriousKeywords = ["kill myself","hurt myself","want to die","cutting","self harm","abuse","abused","hits me","beats me","parents divorce","getting divorced","died","passed away","funeral","grandma died","grandpa died","my pet died","scared of my parents","running away"];
+const safetyReply = "Hey — that sounds really big and hard 💛 I'm just a little sun, so I'm not the best one to help with this. The best thing you can do is talk to a grown-up you trust — a parent, teacher, school counselor, aunt or uncle. If something feels unsafe, you can also call or text 988. You don't have to handle this alone. 🫂";
+
+const kindTopics = [
+  { keywords: ["sad","down","upset","crying","unhappy"], replies: ["Hey, I'm sorry you're feeling that way 💛 Try something small — get a drink, find a cozy spot, just rest.","Sad days happen 🫂 Try drawing how you feel — no words, just colors.","Small good things — fold a blanket, water a plant, write 3 things you're glad about. 💛"]},
+  { keywords: ["mad","angry","frustrated","annoyed"], replies: ["Mad days are hard 💛 Try 20 jumping jacks or a sprint.","Write EVERYTHING you're mad about. Then rip it up.","5 deep breaths, then move — bike, walk, dance. 💛"]},
+  { keywords: ["nervous","scared","anxious","worried","afraid"], replies: ["Nerves are normal 💛 Try '5-4-3-2-1': 5 see, 4 hear, 3 touch, 2 smell, 1 taste.","Write what you're nervous about + 1 tiny step today.","Deep breath in for 4, hold 4, out 4. Repeat 3 times. 💛"]},
+  { keywords: ["lonely","loneliness","no friends","nobody likes me"], replies: ["Loneliness is rough 💛 Text or call one person — even just 'hey.'","Try being in PUBLIC — library, park, coffee shop.","Make stuff for FUTURE-you — letter, art, journal. 💛"]},
+  { keywords: ["embarrassed","cringe"], replies: ["Embarrassment is the worst 💛 In 1 week, no one will remember.","People think about themselves WAY more than they think about you.","Tell ONE person you trust about it."]},
+  { keywords: ["miss","missing","i miss"], replies: ["Missing someone is its own kind of love 💛 Write them a letter.","Look through old photos.","Do something THEY love."]},
+  { keywords: ["overwhelmed","too much","stressed"], replies: ["Overwhelmed is real 💛 Pick ONE tiny thing.","Brain-dump everything on paper.","10-min break — water, walk, breaths. The to-do list will wait."]},
+  { keywords: ["sick","ill","fever"], replies: ["Aw, sick mode 🤒 Rest first. Count birds or clouds.","Write a get-well letter to YOURSELF from the future.","Bed activities: read, audiobook, paper airplanes."]},
+  { keywords: ["cant sleep","can't sleep","insomnia","at night"], replies: ["Brain won't stop? 🌙 Count BACKWARDS from 300 by 3s.","Brain-dump on paper. Close the notebook.","Tense every muscle 5 sec, then RELAX."]},
+  { keywords: ["shy","too shy"], replies: ["Shy is okay 💛 Try ONE small thing — say hi to one person.","Practice talking by yourself.","Text instead of call. Build up slow."]}
+];
+
+const sassyTopics = [
+  { keywords: ["pool","swim","beach","ocean"], replies: ["POOL DAY?? Bestie YESS ☀️🏊 Pool basketball with a beach ball!","Pool magic 💧 Hold-your-breath race, champion picks snacks 💅","Float and watch clouds for 5 min ✨ Pool peace fr"]},
+  { keywords: ["trip","travel","vacation"], replies: ["Trip vibes 🚗 Road trip playlist — everyone picks 2 songs. ICONIC 💅","Be the 'official photographer' 📸","Travel journal — 3 lines per day ✨"]},
+  { keywords: ["family","mom","dad","grandma","grandpa"], replies: ["Family time! 💛 Ask the oldest person for a story from when they were a kid.","Family game night 🎲","Cook or bake together 👩‍🍳"]},
+  { keywords: ["rain","raining"], replies: ["Rain is FUN bestie 🌧️ Jump in puddles!","Blanket fort time 🏰","Rain art — food coloring on paper outside ✨"]},
+  { keywords: ["draw","drawing","paint"], replies: ["Drawing time! 🎨 Same thing in 3 styles. ICONIC","Draw without lifting your pen ✏️","Sketch something boring but make it WAY too detailed 💅"]},
+  { keywords: ["craft","bracelet"], replies: ["Craft mode! 🎀 Friendship bracelets","Tiny cardboard city 🏘️","Paper quilling — SO satisfying ✨"]},
+  { keywords: ["read","book","reading"], replies: ["Book time 📚 Random book, first sentence becomes YOUR story slay","Try a graphic novel 💫","Re-read your childhood favorite 🥹"]},
+  { keywords: ["learn","class","course"], replies: ["Learning mode! 🎓 Free Khan Academy. Pick something WEIRD","30 min on one skill today","Mini expert in 1 hour ✨ ICONIC"]},
+  { keywords: ["hot","sweaty","heat"], replies: ["Hot mode 🥵 ICE POPS bestie","Get in water","Fan + wet washcloth = instant AC fr"]},
+  { keywords: ["sister","brother","sibling","friend","cousin"], replies: ["Two-person mission 🎯 Pillow fort with a secret password","'Two truths and a lie' but ONLY food 🍕","Paper airplane battle ✈️"]},
+  { keywords: ["dog","cat","puppy","kitten","pet"], replies: ["Pet time! 🐾 Teach them ONE new trick","Pet obstacle course 😆","Photograph pet in 5 funny poses 📸 ICONIC"]},
+  { keywords: ["tired","lazy","sleepy"], replies: ["No energy mode 💤 ONE song with eyes closed","Lazy challenge — draw with non-writing hand ✏️","'Top 5 list' of anything 📝"]},
+  { keywords: ["hungry","food","snack"], replies: ["Snack mission! 🍪 'Fancy plate'","Invent your own smoothie 🥤","Toast decorated like a face 🍞 Slay"]},
+  { keywords: ["alone","by myself","solo"], replies: ["Solo missions are the BEST 😎 Letter to your future self","Playlist of 10 songs that match today 🎵","Reorganize a space — productive QUEEN 👑"]},
+  { keywords: ["music","song","playlist"], replies: ["Music time! 🎵 Playlist for a SPECIFIC mood","Try a genre you've NEVER tried","Song from 3 years ago — time travel ✨"]},
+  { keywords: ["cook","bake","recipe"], replies: ["Kitchen mode! 👩‍🍳 5-ingredient recipe","Banana bread or customized brownies","Snack platter 🧀"]},
+  { keywords: ["plant","garden","grow"], replies: ["Plant parent! 🌱 Basil or mint on a windowsill","Plant fruit seeds","'Fairy garden' in a pot ✨"]},
+  { keywords: ["sing","karaoke"], replies: ["SING IT OUT! 🎤","YouTube karaoke versions","'Concert' for family 🎸"]},
+  { keywords: ["sport","soccer","basketball","football","tennis"], replies: ["Sports time! ⚽ ONE skill for 15 min","Invent a new sport","Watch pro highlights, copy ONE move"]},
+  { keywords: ["happy","feel great","excited","amazing"], replies: ["YESSS happy energy 🌟 Do something you've been PUTTING OFF","Make something while feeling good","Text 2 people something nice 💛"]},
+  { keywords: ["piano","guitar","violin","drums","instrument"], replies: ["Musician mode! 🎹","Learn a song you LOVE","Record yourself 🎧"]},
+  { keywords: ["dance","ballet","choreography"], replies: ["Dance mode!! 💃 30-sec YouTube choreo","Make up your OWN 30-sec dance","Stretch first ✨"]},
+  { keywords: ["lego","building blocks"], replies: ["Builder mode! 🧱 Build WITHOUT instructions","'Random brick challenge'","Recreate a real building ✨"]},
+  { keywords: ["journal","diary"], replies: ["Journal time 📔 3 lines","'30 journal prompts for kids'","Decorate your journal ✨"]},
+  { keywords: ["puzzle","sudoku","crossword"], replies: ["Puzzle brain 🧩 Sudoku or crossword","Design your own maze","Daily puzzles — Wordle, Sudoku"]},
+  { keywords: ["space","stars","planets","galaxy"], replies: ["SPACE NERD 🌌 SkyView app","Pick ONE planet, 30-min expert","Draw solar system from memory 🪐"]},
+  { keywords: ["movie","film"], replies: ["MOVIES 🎬 Pick a classic","Trilogy marathon","Write a 'review' after"]},
+  { keywords: ["new baby","mom is having a baby","baby brother coming","baby sister coming","mom is pregnant"], replies: ["BIG NEWS 👶 'Welcome card' for the baby","Ask parents how you can help","List EVERYTHING you'll teach the baby ✨"]},
+  { keywords: ["wedding","getting married"], replies: ["WEDDING!! 💒 Pick outfit early","Practice spinning","Watch the emotional moments ✨"]},
+  { keywords: ["first time","never done","never been"], replies: ["FIRST TIME energy! 🎉 Write it down","Nerves are normal","Notice EVERYTHING"]},
+  { keywords: ["birthday","bday"], replies: ["BIRTHDAY ENERGY 🎂🎉 'Wish list' for the YEAR","Plan your dream hangout","List 5 things that made this year cool 💛"]},
+  { keywords: ["windy","wind"], replies: ["Windy day! 💨 Paper kite — EPIC","Watch leaves move","Bubbles 🫧 They go FAR"]},
+  { keywords: ["cold","freezing","chilly"], replies: ["Brr! 🥶 Hot chocolate + cozy socks","Blanket burrito","10 jumping jacks warms you up"]}
+];
+
+const parentTopics = [
+  { keywords: ["how does this work","how it works","explain"], replies: ["The website has 3 parts: (1) Mood buttons that show 9 activity ideas each, (2) A 'Surprise me' button for random ideas, and (3) Me, Summer, who chats with kids and matches what they say to activity suggestions. Everything works offline once loaded. 💛"]},
+  { keywords: ["safety","safe","worried","concerns"], replies: ["Great question! If a child types something serious — mentions of self-harm, abuse, or family loss — I gently redirect them to talk to a trusted adult and provide the 988 crisis line. I don't try to handle these myself. 💛"]},
+  { keywords: ["cost","money","pay","price","subscription"], replies: ["The website is completely free. There are no ads, no subscriptions, and no in-app purchases. Free hosting on Netlify works fine. 💛"]},
+  { keywords: ["data","privacy","collect","tracking"], replies: ["I collect zero data. No accounts are required, no information is stored, and nothing is tracked. The website runs entirely in the browser. 💛"]},
+  { keywords: ["age","old","year","appropriate"], replies: ["Summer Spark is designed for kids ages 6 to 14, but honestly, anyone can use it. All content is age-appropriate. 💛"]}
+];
+
+const sassyFallback = ["Hmm not sure bestie 🤔 Pick a mood button or tell me how you're feeling ✨","Didn't catch that fr 🌞 Try 'I'm bored' or pick a mood ⬆️","Not sure pookie! Say 'I'm bored' or pick a mood 💛"];
+
+let currentMood = null;
+const done = [];
+
+const moodRow = document.getElementById('mood-row');
+const ideasLabel = document.getElementById('ideas-label');
+const ideasPlaceholder = document.getElementById('ideas-placeholder');
+const ideasList = document.getElementById('ideas-list');
+const surpriseBtn = document.getElementById('surprise-btn');
+const doneListWrap = document.getElementById('done-list-wrap');
+const doneList = document.getElementById('done-list');
+const countPill = document.getElementById('count-pill');
+const modeStatus = document.getElementById('mode-status');
+
+function highlight(mood) {
+  [...moodRow.children].forEach(b => {
+    const picked = b.getAttribute('data-mood') === mood;
+    b.style.background = picked ? '#FAC775' : 'white';
+    b.style.borderColor = picked ? '#BA7517' : '#FAC775';
+  });
+}
+
+function markDone(text) {
+  done.push(text);
+  doneListWrap.hidden = false;
+  doneList.innerHTML = done.map(d => '<li>' + d + '</li>').join('');
+  countPill.textContent = done.length + ' done';
+}
+
+function escapeText(t) { return t.replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+function renderIdeas(mood) {
+  currentMood = mood;
+  const labels = { creative: 'creative ideas 🎨', active: 'active ideas 🏊', brainy: 'brainy ideas 🧠' };
+  ideasLabel.textContent = labels[mood] || 'your ideas ✨';
+  ideasPlaceholder.style.display = 'none';
+  ideasList.innerHTML = ideas[mood].map(idea =>
+    '<div style="display:flex; align-items:center; gap:10px; background:#FFF8E1; padding:10px 12px; border-radius:10px; margin-bottom:8px; border:1px solid #FAC775;">' +
+      '<span style="font-size:22px;">' + idea.emoji + '</span>' +
+      '<span style="flex:1; font-size:14px; font-weight:500;">' + idea.text + '</span>' +
+      '<button class="did-btn" data-text="' + escapeText(idea.text) + '" style="padding:6px 12px; border-radius:999px; background:#C0DD97; border:1px solid #97C459; color:#1a1a1a; font-weight:600; font-size:12px; cursor:pointer; flex-shrink:0;">✓ Did it!</button>' +
+    '</div>'
+  ).join('');
+  ideasList.querySelectorAll('.did-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      markDone(btn.getAttribute('data-text'));
+      btn.textContent = '🎉 Done!';
+      btn.style.background = '#5DCAA5';
+      btn.disabled = true;
+    });
+  });
+}
+
+moodRow.addEventListener('click', e => {
+  const btn = e.target.closest('button'); if (!btn) return;
+  highlight(btn.dataset.mood); renderIdeas(btn.dataset.mood);
+});
+
+surpriseBtn.addEventListener('click', () => {
+  const moods = Object.keys(ideas);
+  const rm = moods[Math.floor(Math.random()*moods.length)];
+  const s = ideas[rm][Math.floor(Math.random()*ideas[rm].length)];
+  highlight(rm); currentMood = rm;
+  ideasLabel.textContent = '🎲 surprise!';
+  ideasPlaceholder.style.display = 'none';
+  ideasList.innerHTML = '<div style="background:#FFF8E1; padding:18px; border-radius:10px; border:2px solid #EF9F27; text-align:center;"><div style="font-size:36px; margin-bottom:8px;">' + s.emoji + '</div><p style="font-size:17px; font-weight:600; margin:0 0 12px; color:#1a1a1a;">' + s.text + '</p><button class="db" style="padding:8px 18px; border-radius:999px; background:#C0DD97; border:1px solid #97C459; color:#1a1a1a; font-weight:600; font-size:13px; cursor:pointer;">✓ I did it!</button></div>';
+  const bb = ideasList.querySelector('.db');
+  bb.addEventListener('click', () => {
+    markDone(s.text); bb.textContent = '🎉 Done!'; bb.style.background = '#5DCAA5'; bb.disabled = true;
+  });
+});
+
+const summerBanner = document.getElementById('summer-banner');
+const summerChat = document.getElementById('summer-chat');
+const summerToggle = document.getElementById('summer-toggle');
+const chatLog = document.getElementById('chat-log');
+const chatInput = document.getElementById('chat-input');
+const chatSend = document.getElementById('chat-send');
+
+summerBanner.addEventListener('click', () => {
+  const open = !summerChat.hidden;
+  summerChat.hidden = open;
+  summerToggle.textContent = open ? '▾' : '▴';
+});
+
+function pickRandom(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+function findKindMatch(lower) { const m = kindTopics.filter(g => g.keywords.some(k => lower.includes(k))); return m.length ? pickRandom(pickRandom(m).replies) : null; }
+function findSassyMatch(lower) { const m = sassyTopics.filter(g => g.keywords.some(k => lower.includes(k))); return m.length ? pickRandom(pickRandom(m).replies) : null; }
+function findParentMatch(lower) { const m = parentTopics.filter(g => g.keywords.some(k => lower.includes(k))); return m.length ? pickRandom(pickRandom(m).replies) : null; }
+
+function setMode(m) {
+  userMode = m;
+  if (m === "kid") modeStatus.textContent = "🧒 Kid mode — sassy bestie energy 💅";
+  else if (m === "parent") modeStatus.textContent = "👨‍👩‍👧 Parent mode — info & explanations";
+  else if (m === "creator") modeStatus.textContent = "🌟 Creator mode — hi Lakshmi! 💛";
+}
+
+function findSummerReply(text) {
+  const lower = text.toLowerCase();
+  if (seriousKeywords.some(kw => lower.includes(kw))) return safetyReply;
+  if (lower.includes(creatorPassword)) { setMode("creator"); return pickRandom(creatorWelcome); }
+  if (lower.includes(parentPassword)) { setMode("parent"); return pickRandom(parentWelcome); }
+  if (lower.includes(kidPassword)) { setMode("kid"); return pickRandom(kidWelcome); }
+  if (!userMode) return pickRandom(promptForMode);
+  const k = findKindMatch(lower); if (k) return k;
+  if (userMode === "parent") { const p = findParentMatch(lower); return p || "I'm happy to answer questions about how the website works, safety features, cost, privacy, or what age range it's for. What would you like to know? 💛"; }
+  const s = findSassyMatch(lower); if (s) return s;
+  if (/^(hi|hello|hey|yo|sup|hii)\b/i.test(lower)) return "Heyyy bestie! ☀️✨ What's the vibe?";
+  if (/bored/i.test(lower)) return "BORED?? Bestie you came to the RIGHT place 💅☀️ Pick a mood — creative 🎨 active 🏊 or brainy 🧠?";
+  if (/(some|few) (activities|ideas)|give me ideas|what (can|should) i do/i.test(lower)) {
+    const all = [...ideas.creative, ...ideas.active, ...ideas.brainy];
+    const picks = all.sort(() => Math.random()-0.5).slice(0, 4);
+    return "Okay say less 💅 here's a few:\n\n" + picks.map(i => "• " + i.emoji + " " + i.text).join("\n");
+  }
+  if (/thanks|thank you|ty/i.test(lower)) return "Anytime bestie 💛✨";
+  if (/bye|goodbye/i.test(lower)) return "Byeee bestie!! ☀️ Go SLAY your day 💅";
+  return pickRandom(sassyFallback);
+}
+
+function addMessage(text, isUser) {
+  const div = document.createElement('div');
+  div.style.cssText = isUser
+    ? "background: white; border: 1px solid #FAC775; color: #1a1a1a; padding: 10px 14px; border-radius: 14px 14px 4px 14px; max-width: 85%; align-self: flex-end; font-size: 14px; line-height: 1.5; white-space: pre-wrap;"
+    : "background: #FFF8E1; color: #1a1a1a; padding: 10px 14px; border-radius: 14px 14px 14px 4px; max-width: 90%; align-self: flex-start; font-size: 14px; line-height: 1.6; border: 1px solid #FAC775; white-space: pre-wrap;";
+  if (isUser) div.textContent = text; else div.innerHTML = text;
+  chatLog.appendChild(div);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function sendMessage() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  addMessage(text, true);
+  chatInput.value = '';
+  setTimeout(() => { addMessage(findSummerReply(text), false); }, 600);
+}
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+</script>
+</body>
+</html>
